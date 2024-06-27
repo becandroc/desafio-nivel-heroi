@@ -1,0 +1,1 @@
+let heroName = prompt("What is your hero's name?");
