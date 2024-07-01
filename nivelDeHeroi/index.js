@@ -1,15 +1,16 @@
 //Making prompt available in VS Code
 const prompt = require('prompt-sync')();
 
-let heroName = prompt("Digite o nome do seu heroi")
+//Ask for name
+let heroName = prompt("Digite o nome do seu heroi: ")
+
 let xp = 1
-console.log ("O nome do herói é: " + heroName)
+let rank = "None"
 
-//Turning name into XP
-
+//Turn name into XP
 for (let i = 0; i < heroName.length; i++) {
 
-    let character = heroName[i]
+    let character = heroName[i].toLowerCase()
     let number = 0
 
     switch (character) {
@@ -92,10 +93,42 @@ for (let i = 0; i < heroName.length; i++) {
             number = 26
             break;
         default : 
-            number = 999;
+            number = 1;
     }
 
     xp = xp * number
 }
 
-console.log(heroName + ' has ' + xp + ' XP')
+//Rank based on XP level
+switch (true) {
+    case (xp <= 1000) :
+        rank = "Ferro"
+        break;
+    case (xp <= 2000) :
+        rank = "Bronze"
+        break;
+    case (xp <= 5000) :
+        rank = "Prata"
+        break;
+    case (xp <= 7000) :
+        rank = "Ouro"
+        break;
+    case (xp <= 8000) :
+        rank = "Platina"
+        break;
+    case (xp <= 9000) :
+        rank = "Ascendente"
+        break;
+    case (xp <= 10000) :
+        rank = "Imortal"
+        break;
+    case (xp > 10000) :
+        rank = "Radiante"
+        break;
+    default : 
+        console.log("Alguma coisa deu errado, tente novamente...")
+        break;
+}
+
+//Show rank
+console.log("O Herói de nome " + heroName + " está no nível de " + rank + "!")
